@@ -1,0 +1,13 @@
+1.
+#include <iostream>
+
+using namespace std;
+int main() {
+	int a, b, s, p;
+	cout << "Vvedite a, b"  << endl;
+	cin >> a ;
+	cin >> b;
+	cout << "Ploschad = " << a * b << endl;
+	cout << "Perimetr = " << 2 * (a + b) << endl;
+	return 0;
+}
