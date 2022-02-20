@@ -11,3 +11,18 @@ int main() {
 	cout << "Perimetr = " << 2 * (a + b) << endl;
 	return 0;
 }
+
+
+2.
+#include <iostream>
+
+using namespace std;
+int main() {
+	int d;
+	float p = 3.14;
+	cout << "Vvedite diametr okr " << endl;
+	cin >> d;
+	cout << "Dlina okr= " << p * d << endl;
+	
+	return 0;
+}
