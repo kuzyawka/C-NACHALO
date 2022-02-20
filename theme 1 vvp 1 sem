@@ -26,3 +26,23 @@ int main() {
 	
 	return 0;
 }
+
+4.
+#include <iostream>
+#include<cmath>
+using namespace std;
+int main() {
+	int a, b;
+	cin >> a;
+	cin >> b;
+	cout << "summa= " << pow(a, 2) + pow(b, 2) << endl; 
+	cout << "proizvedenie= " << pow(a, 2) + pow(b, 2) << endl;
+	if (a > b) {
+	cout << "chasnoe= " << pow(a, 2) / pow(b, 2) << endl;
+	cout << "raznost= " << pow(a, 2) - pow(b, 2) << endl; }
+	else {
+		cout << "chasnoe= " << pow(b, 2) / pow(a, 2) << endl;
+		cout << "raznost= " << pow(b, 2) - pow(a, 2) << endl;
+	}
+	return 0;
+}
