@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+float func(float x) {
+	float rez = pow(x - 1, 2) - 0.5*exp(x);
+	return rez;
+}
+int main() {
+
+	setlocale(LC_ALL, "Russian");
+	int count=0; float e, f, a, b, f2;
+	
+	cout << "Введите используемую точность: " << endl;
+	cin >> e;
+	
+	cout << "===========МЕТОД ДИХОТОМИИ===========" << endl;
+	cout << "Введите концы отрезка a, b: " << endl;
+	cin >> a >> b;
+	f2= func(a);
+	while (abs(a - b) > e) {
+		
+		a = (float)(a + b) / 2;
+		f=func(a);
+		if (f*f2 > 0)
+			b = b;
+		else b=a;
+		a = (float)(a + b) / 2;
+		f2 = f;
+		count++;
+	}
+	cout << "Значение корня= " << a << "  Точность= " << e << "  Количество итераций= " << count << endl;
+	return 0;
+
+}
