@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+float func(float x)
+{
+	float rez = pow((x - 1), 2) - 0.5 * exp(x);
+	return rez;
+}
+
+double func2(double x)
+{
+	double rez = sqrt(0.5 * exp(x)) + 1;
+	return rez;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	float e;
+	cout << "Введите точность e: ";
+	cin >> e;
+
+	cout << "==========МЕТОД ДИХОТОМИИ=========== \n";
+	double a, b, x;
+	int count = 0;
+	double f, f0;
+	cout << "Введите концы отрезка a и b: ";
+	cin >> a >> b;
+	f0 = func(a);
+	x = (a + b) / 2;
+
+	while (abs(a - b) > e)
+	{
+		f = func(x);
+		if (f * f0 > 0)
+		{
+			b = b;
+			a = x;
+		}
+		else
+		{
+			b = x;
+			a = a;
+		}
+		x = (a + b) / 2;
+		f0 = f;
+		count++;
+	}
+	cout << "Значение корня= " << a << "\nточность= " << e << " \nкол-во итераций= " << count << '\n';
+
+	cout << "===========МЕТОД ПРОСТОЙ ИТЕРАЦИИ============ \n";
+	double x0, x1;
+	int count2 = 0;
+	cout << "Введите начальное приближение:";
+	cin >> x0;
+	x1 = func2(x0);
+
+	while (abs(x0 - x1) > e)
+	{
+		x0 = x1;
+		x1 = func2(x0);
+		count2++;
+	}
+	cout << "Значение корня= " << x1 << "\nточность= " << e << "\nкол-во итераций= " << count2 << '\n';
+}
