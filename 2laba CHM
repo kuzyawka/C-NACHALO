@@ -65,3 +65,47 @@ int main()
 	}
 	cout << "Значение корня= " << x1 << "\nточность= " << e << "\nкол-во итераций= " << count2 << '\n';
 }
+
+
+
+
+
+
+
+
+
+2
+
+
+
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main(){
+	setlocale(LC_ALL, "Russian");
+	cout << "===========МЕТОД ПРОСТОЙ ИТЕРАЦИИ============ \n";
+	
+	double a, b, e,x, x1, fa, fb;
+
+	cout << "введите  точность e: ";
+	cin >> e;
+	cout << "введите  приближенное значение: ";
+	cin >> x;
+	int i = 0;
+	while (1) {
+		i++;
+		cout << i << endl;
+		x1 = sqrt(0.5*exp(x)) + 1;
+		if (abs(x - x1) < e) {
+			cout << "точность: " << e << "\nкорень: " << x << "\nколичеcтво итераций" << i << endl;
+			break;
+		}
+		else x = x1;
+	}
+
+	
+return 0;
+}
