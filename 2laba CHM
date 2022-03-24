@@ -3,15 +3,15 @@
 
 using namespace std;
 
-float func(float x)
+double func(double x)
 {
-	float rez = pow((x - 1), 2) - 0.5 * exp(x);
+	double rez = pow(x, 2)-2*x+1 - 0.5 * exp(x);
 	return rez;
 }
 
 double func2(double x)
 {
-	double rez = sqrt(0.5 * exp(x)) + 1;
+	double rez = (pow(x,2)-0.5*exp(x)+1)/2;
 	return rez;
 }
 
@@ -21,10 +21,10 @@ int main()
 	float e;
 	cout << "Введите точность e: ";
 	cin >> e;
-
+	
 	cout << "==========МЕТОД ДИХОТОМИИ=========== \n";
 	double a, b, x;
-	int count = 0;
+	int count = 1;
 	double f, f0;
 	cout << "Введите концы отрезка a и b: ";
 	cin >> a >> b;
@@ -36,27 +36,24 @@ int main()
 		f = func(x);
 		if (f * f0 > 0)
 		{
-			b = b;
 			a = x;
 		}
 		else
 		{
 			b = x;
-			a = a;
 		}
 		x = (a + b) / 2;
-		f0 = f;
+		f = f0;
 		count++;
 	}
-	cout << "Значение корня= " << a << "\nточность= " << e << " \nкол-во итераций= " << count << '\n';
-
+	cout << "Значение корня= " << x << "\nточность= " << e << " \nкол-во итераций= " << count << '\n';
+	
 	cout << "===========МЕТОД ПРОСТОЙ ИТЕРАЦИИ============ \n";
 	double x0, x1;
 	int count2 = 0;
 	cout << "Введите начальное приближение:";
 	cin >> x0;
 	x1 = func2(x0);
-
 	while (abs(x0 - x1) > e)
 	{
 		x0 = x1;
@@ -64,12 +61,8 @@ int main()
 		count2++;
 	}
 	cout << "Значение корня= " << x1 << "\nточность= " << e << "\nкол-во итераций= " << count2 << '\n';
+	return 0;
 }
-
-
-
-
-
 
 
 
