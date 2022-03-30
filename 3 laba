@@ -39,9 +39,8 @@ int main()
 	}
 	cout << "Значение корня= " << x << "\nточность= " << e << " \nкол-во итераций= " << count << '\n';
 
-	
-	
-	
+
+
 	cout << "==========МЕТОД ХОРД=========== \n";
 	double a, b, x2;
 	int count2 = 1;
@@ -52,22 +51,22 @@ int main()
 	fb = func(b);
 	x2 = a-(b-a)*fa/(fb-fa);
     
-	fx = func(x2);
 	        while (abs(x2 - b) > e)
 			{
 				fx = func(x2);
-				if (fx * fa > 0)
-				{
-					b = x2;
-					
-				}
-				else
+				if (fx * func(a) > 0)
 				{
 					a = x2;
 					
 				}
-				fb=
-				x2 = a - (b - a) * fa / (fb - fa);
+				else
+				{
+					b = x2;
+					
+				}
+				
+				x2 = a - (b - a) * func(a) / (func(b) - func(a));
+				fx = func(x2);
 			count2++;
 			}
 		cout << "Значение корня= " << x2 << "\nточность= " << e << " \nкол-во итераций= " << count2 << '\n';
