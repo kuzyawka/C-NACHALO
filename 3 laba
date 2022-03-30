@@ -40,5 +40,36 @@ int main()
 	cout << "Значение корня= " << x << "\nточность= " << e << " \nкол-во итераций= " << count << '\n';
 
 	
+	
+	
+	cout << "==========МЕТОД ХОРД=========== \n";
+	double a, b, x2;
+	int count2 = 1;
+	double fb, fa, fx;
+	cout << "Введите концы отрезка a и b: ";
+	cin >> a >> b;
+	fa = func(a);
+	fb = func(b);
+	x2 = a-(b-a)*fa/(fb-fa);
+    
+	fx = func(x2);
+	        while (abs(x2 - b) > e)
+			{
+				fx = func(x2);
+				if (fx * fa > 0)
+				{
+					b = x2;
+					
+				}
+				else
+				{
+					a = x2;
+					
+				}
+				fb=
+				x2 = a - (b - a) * fa / (fb - fa);
+			count2++;
+			}
+		cout << "Значение корня= " << x2 << "\nточность= " << e << " \nкол-во итераций= " << count2 << '\n';
 	return 0;
 }
