@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double func(double x)
+{
+	double rez = pow(x, 2) - 2 * x + 1 - 0.5 * exp(x);
+	return rez;
+}
+
+double func2(double x)
+{
+	double rez = 2*x-2-0.5*exp(x);
+	return rez;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	float e;
+	cout << "Введите точность e: ";
+	cin >> e;
+
+	cout << "==========МЕТОД НЬЮТОНА=========== \n";
+	double x0, x;
+	int count = 1;
+	double f, f0;
+	cout << "Введите начальное значение х0: ";
+	cin >> x0;
+	f0 = func(x0);
+	x = x0 - func(x0) / func2(x0);
+
+	while (abs(x-x0) > e)
+	{
+		x0 = x;
+		x = x0 - func(x0) / func2(x0);
+		count++;
+	}
+	cout << "Значение корня= " << x << "\nточность= " << e << " \nкол-во итераций= " << count << '\n';
+
+	
+	return 0;
+}
