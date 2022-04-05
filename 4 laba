@@ -22,5 +22,36 @@ int main() {
 
 	}
 	
+	cout << "=======МЕТОД НЬЮТОНА========" << endl;
+	double x1, y1, x2, y2, del, delx, dely, f, g, fx, fy, gx, gy;
+	int count1 = 0;
+	cout << "Начальное значение для x1, y1 ";
+	cin >> x1 >> y1;
+	while (true) {
+		count1++;
+		f = sin(x1) + 2 * y1 - 2;
+		g = cos(y1 - 1) + x1 - 0.72;
+
+		fx = cos(x1);
+		fy = 2;
+
+		gx = 1;
+		gy = -sin(y1 - 1);
+
+		del = gy * fx - fy * gx;
+		delx = (fy * g - f * gy) / del;
+		dely = (f * gx - g * fx) / del;
+
+		x2 = x1 + delx;
+		y2 = y1 + dely;
+
+		if (abs(x2 - x1) < e && abs(y2 - y1) < e)
+		{
+			cout << "x = " << x2 << endl << "y = " << y2<< "\nКол-во итераций: " << count1 << endl;
+			break;
+		}
+		x1 = x2;
+		y1 = y2;
+	}
 	return 0;
 }
