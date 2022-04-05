@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int k = 7;
+	double v[100], u[100], x[100], b = 2, c = 1, a = 1, d = 10 * k;
+	cout << "========МЕТОД ПРОГОНКИ==========" << endl;
+	u[0] = -(c / b);
+	v[0] = d / b;
+	for (int i = 1; i < 100; i++)
+	{
+		if (i != 99)
+		{
+			u[i] = -(c) / (a * u[i - 1] + b);
+			v[i] = (d - a * v[i - 1]) / (a *u[i - 1] + b);
+		}
+		else
+		{
+			u[i] = 0;
+			v[i] = (d - a * v[i - 1]) / (a * u[i - 1] + b);
+		}
+	}
+
+	for (int i = 99; i >= 0; i--)
+	{
+		if (i != 99)
+		{
+			x[i] = u[i] * x[i + 1] + v[i];
+		}
+		else
+		{
+			x[i] = v[i];
+		}
+	}
+	
+	for (int i = 0; i < 100; i++)
+	{
+		cout << "x[" << i + 1 << "] = " << x[i] << endl;
+	}
+	return 0;
+}
