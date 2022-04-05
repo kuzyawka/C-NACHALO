@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "Russian");
+	cout << "=======МЕТОД ПРОСТОЙ ИТЕРАЦИИ========" << endl;
+	double e, x0=0, y0=0, x, y; int count = 0;
+	cout <<"Введите точность ";
+	cin >> e;
+
+	while (true) {
+		count++;
+		x = 0.72 - cos(y0 - 1);
+		y = (2 - sin(x0)) / 2;
+		if (abs(x - x0) < e && abs(y - y0) < e)
+		{
+			cout << "x = " << x << endl << "y = " << y<< "\nКол-во итераций: " << count << endl;
+			break;
+		}
+		x0 = x;
+		y0 = y;
+
+	}
+	
+	return 0;
+}
