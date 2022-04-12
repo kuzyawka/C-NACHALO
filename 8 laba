@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "Russian");
+	const double tochn = 1.90155;
+	double e = 0.0001, a = 1, b = 5, sum = 0, x = a, n, h;
+	int count=0;
+	cout << "=============МЕТОД СИМПСОНА=============" << endl;
+	for (n = 2;; n *= 2) {
+		count++;
+		h = (b - a) / n;
+		sum = 0;
+		x = a;
+		
+		for (int i = 0; i <= n; i++) {
+			if ((i == 0) || (i == n)) {
+				if (i == 0) {
+					sum += cos(log(x));
+				}
+				else {
+
+					sum += cos(log(b));
+				}
+			}
+			else {
+				if (i % 2 != 0)
+				{
+					sum += cos(log(x)) * 4;
+				}
+				else {
+					sum += cos(log(x)) * 2;
+				}
+			}
+			x += h;
+			}
+			sum = sum * h / 3;
+			if (abs(sum - tochn) < e) {
+				cout << "Количество итераций = " << count << endl << "Количество отрезков = " << n << endl << "Значение интеграла = " << sum << endl;
+				break;
+			}
+		
+		cout << sum << endl;
+	}
+	return 0;
+ }
