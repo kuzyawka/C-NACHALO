@@ -12,40 +12,8 @@ int main() {
 		h = (b - a) / n;
 		sum = 0;
 		x = a;
-		//?????cout << h << endl;
-		for (int i = 1; i <= n; i++) {
-			sum += cos(log(x));
-			x += h;
-			
-		}
-		if (abs(sum * h - tochn) < e) {
-			cout << "Количество итераций = " << count << endl<< "Количество отрезков = " << n << endl<< "Значение интеграла = " << sum * h << endl;
-			break;
-		}
-	}
-	return 0;
- }
-
-
-
-
-или так
-#include <iostream>
-#include <cmath>
-using namespace std;
-int main() {
-	setlocale(LC_ALL, "Russian");
-	const double tochn = 1.90155;
-	double e=0.0001, a = 1, b = 5, sum = 0, x = a, n, h;
-	int count=0;
-	cout << "=============МЕТОД ПРЯМОУГОЛЬНИКОВ С ДРОБЛЕНИЕМ ШАГА=============" << endl;
-	for (n = 2;; n *= 2) {
-		count++;
-		h = (b - a) / n;
-		sum = 0;
-		x = a;
 		
-		//?????cout << h << endl;
+	
 		for (int i = 1; i <= n; i++) {
 			sum += cos(log(x));
 			x += h;
@@ -55,7 +23,7 @@ int main() {
 			cout << "Количество итераций = " << count << endl<< "Количество отрезков = " << n << endl<< "Значение интеграла = " << sum * h << endl;
 			break;
 		}
-		//??????????cout << sum*h << endl;
+		cout << sum*h << endl;
 	}
 	return 0;
  }
