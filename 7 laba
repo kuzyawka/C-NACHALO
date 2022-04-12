@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "Russian");
+	const double tochn = 1.90155;
+	double e = 0.0001, a = 1, b = 5, sum = 0, x = a, n, h, linf;
+	int count=0;
+	cout << "=============МЕТОД ТРАПЕЦИЙ С ДРОБЛЕНИЕМ ШАГА=============" << endl;
+	for (n = 2;; n *= 2) {
+		count++;
+		h = (b - a) / n;
+		sum = 0;
+		x = a;
+		
+	
+		for (int i = 1; i <= n; i++) {
+			linf = (cos(log(x)) + cos(log(x + h))) / 2;
+			sum += linf*h;
+			x += h;
+			
+		}
+		if (abs(sum - tochn) < e) {
+			cout << "Количество итераций = " << count << endl<< "Количество отрезков = " << n << endl<< "Значение интеграла = " << sum << endl;
+			break;
+		}
+		cout << sum << endl;
+	}
+	return 0;
+ }
